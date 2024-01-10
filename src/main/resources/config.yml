@@ -1,7 +1,7 @@
-options:
+settings:
   max_logs: 128
-  auto_pickup_drops: true
-  permission_to_decapitate: ''
+  auto_pickup_logs: true
+  permission_to_decapitate: 'treecapitator.use' # If you do not want permission to use it, simply leave it blank. (permission_to_decapitate: '')
   diagonal_logs: false
   mangrove_roots: false
   shift_to_activate: false

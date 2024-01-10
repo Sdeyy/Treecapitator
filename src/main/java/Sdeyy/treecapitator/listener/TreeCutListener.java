@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TreeCutListener implements Listener {
 
-    final boolean diagonal_logs = Treecapitator.getInstance().getConfig().getBoolean("options.diagonal_logs");
+    final boolean diagonal_logs = Treecapitator.getInstance().getConfig().getBoolean("settings.diagonal_logs");
     final BlockFace[] faces = diagonal_logs
             ? new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.NORTH_EAST, BlockFace.EAST, BlockFace.SOUTH_EAST, BlockFace.SOUTH, BlockFace.SOUTH_WEST, BlockFace.WEST, BlockFace.NORTH_WEST }
             : new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST };
@@ -25,7 +25,7 @@ public class TreeCutListener implements Listener {
     public void treeCut(BlockBreakEvent event) {
 
         Player player = event.getPlayer();
-        String permission = Treecapitator.getInstance().getConfig().getString("options.permission_to_decapitate");
+        String permission = Treecapitator.getInstance().getConfig().getString("settings.permission_to_decapitate");
 
         if(!permission.equals("")) {
             if(!player.hasPermission(permission)) {
@@ -35,8 +35,8 @@ public class TreeCutListener implements Listener {
 
         if(Treecapitator.getInstance().isLog(event.getBlock())) {
 
-            if(Treecapitator.getInstance().getConfig().isSet("options.shift_to_activate")) {
-                if(Treecapitator.getInstance().getConfig().getBoolean("options.shift_to_activate") && !player.isSneaking()) {
+            if(Treecapitator.getInstance().getConfig().isSet("settings.shift_to_activate")) {
+                if(Treecapitator.getInstance().getConfig().getBoolean("settings.shift_to_activate") && !player.isSneaking()) {
                     return;
                 }
             }
@@ -52,14 +52,14 @@ public class TreeCutListener implements Listener {
                 @Override
                 public void run() {
 
-                    if(logsLeft.isEmpty() || logCounter > Treecapitator.getInstance().getConfig().getInt("options.max_logs")) {
+                    if(logsLeft.isEmpty() || logCounter > Treecapitator.getInstance().getConfig().getInt("settings.max_logs")) {
                         cancel();
                         return;
                     }
 
                     Block log = logsLeft.get(0);
 
-                    if(Treecapitator.getInstance().getConfig().getBoolean("options.auto_pickup_drops")) {
+                    if(Treecapitator.getInstance().getConfig().getBoolean("settings.auto_pickup_logs")) {
                         for(ItemStack item : log.getDrops(player.getInventory().getItemInMainHand())) {
                             player.getInventory().addItem(item);
                         }

@@ -1,7 +1,6 @@
 name: Treecapitator
-version: 1.0.1
+version: 1.0.1-SNAPSHOT
 main: Sdeyy.treecapitator.Treecapitator
 api-version: 1.19
 authors: [ Sdeyy ]
-description: Decapitate those pesky trees
-softdepend: [ Jobs ]
+description: Behead those pesky trees without the need to cut them down completely.
